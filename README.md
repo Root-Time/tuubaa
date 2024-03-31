@@ -5,14 +5,16 @@ Das ist der Discord Bot für den [tuubaa Discord Server](https://discord.gg/tuub
 # Features
 - ticket
 - temp voice
-- level system
 - custom welcome messages
 - select roles
-- music (beta)
 
 # Todo
 - moderation
 - relationship
+
+# Rewrite
+- level
+- music
 
 # Fehler / Bugs
 Bei Fehler/ Bugs könnt ihr ein Issue eröffnen oder mich privat anschreiben. time (@time_root)
