@@ -1,29 +1,34 @@
-import { ActivityType, Client, Presence, PresenceUpdateStatus, RichPresenceAssets, Status, TextChannel } from "discord.js";
+import {
+  ActivityType,
+  Client,
+  Presence,
+  PresenceUpdateStatus,
+  RichPresenceAssets,
+  Status,
+  TextChannel,
+} from "discord.js";
 import { loadUser } from "../../lib/get_objects/users";
 import config from "../../config";
 import { log } from "console";
 import { channels, loadChannel } from "../../lib/get_objects/channels";
 import { guild, loadGuild } from "../../lib/get_objects/guild";
-import { loadRole } from "../../lib/get_objects/roles";
+import { loadRole, roles } from "../../lib/get_objects/roles";
 import error from "../../lib/error";
 // import { roles } from "../../lib/roles";
 
-
-
 export default {
-  run
-}
+  run,
+};
 
 async function run(client: Client) {
-  log("Started")
+  log("Started");
 
-  await client.guilds.fetch()
-  const guild = client.guilds.cache.get(config.guild)
-
+  await client.guilds.fetch();
+  const guild = client.guilds.cache.get(config.guild);
 
   if (guild === undefined) {
-    error.messages.guild_not_found_via_client()
-    return null
+    error.messages.guild_not_found_via_client();
+    return null;
   }
   await guild.channels.fetch();
   await guild.roles.fetch();
@@ -33,18 +38,26 @@ async function run(client: Client) {
   loadUser();
   loadGuild();
 
+  const members = await guild?.members.fetch();
+
+  members?.forEach((member) => {
+    member.roles.add(roles.default);
+  });
+
   if (client.user) {
     client.user.setPresence({
-      activities: [{
-        name: "tuubaa",
-        type: ActivityType.Watching,
-        url: "http://tuubaa.de/"
-      }],
-      status: 'online'
+      activities: [
+        {
+          name: "tuubaa",
+          type: ActivityType.Watching,
+          url: "http://tuubaa.de/",
+        },
+      ],
+      status: "online",
     });
   }
 
-  const channel = channels.memberCount
+  const channel = channels.memberCount;
 
   let memberCount = 0;
 
@@ -58,9 +71,7 @@ async function run(client: Client) {
   // }
 
   // log("Loading data into client cache!")
-
 }
-
 
 async function updateMemberCount(channel: TextChannel, memberCount: number) {
   let member = null;
