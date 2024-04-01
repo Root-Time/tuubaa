@@ -24,18 +24,16 @@ import { channels } from "../../lib/get_objects/channels";
 import { Modules } from "../../lib/commands";
 import { TicketCommand } from "./commands";
 
-
 export default {
   run,
   commands: [TicketCommand],
 } as Modules;
 
-
 async function run(client: Client) {
   // const ticketChannel = await get.ticketChannel();
   // sendTicketInit(client);
   onTicket(client);
-};
+}
 
 async function onTicket(client: Client) {
   info(">> Ticket Module loaded");
@@ -163,6 +161,11 @@ async function createTicket(interaction: ButtonInteraction<CacheType>) {
       {
         id: interaction.guild.id,
         deny: [PermissionsBitField.Flags.ViewChannel],
+        allow: [
+          name.includes("hobby")
+            ? PermissionsBitField.Flags.AttachFiles
+            : PermissionsBitField.Flags.SendMessages,
+        ],
       },
       {
         id: interaction.user.id,
@@ -282,11 +285,14 @@ async function createClaim(interaction: ButtonInteraction<CacheType>) {
   });
 
   await channel.send({
-    embeds: [new EmbedBuilder()
-      .setTitle("Ticket System")
-      .setColor(Colors.Aqua)
-      .setDescription(`Das Ticket wurde von <@${interaction.user.id}> geclaimt!`)
-    ]
+    embeds: [
+      new EmbedBuilder()
+        .setTitle("Ticket System")
+        .setColor(Colors.Aqua)
+        .setDescription(
+          `Das Ticket wurde von <@${interaction.user.id}> geclaimt!`
+        ),
+    ],
   });
 }
 
@@ -349,7 +355,7 @@ async function createClose(interaction: ButtonInteraction<CacheType>) {
   });
   await channel.setParent(parent);
 
-  const logChannel = channels.log
+  const logChannel = channels.log;
 
   await logChannel.send({
     embeds: [
