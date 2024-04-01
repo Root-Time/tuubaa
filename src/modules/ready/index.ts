@@ -41,7 +41,7 @@ async function run(client: Client) {
   const members = await guild?.members.fetch();
 
   members?.forEach((member) => {
-    if (!member.roles.cache.has(roles.default.id)) {
+    if (!member.roles.cache.has(roles.default.id) && !member.user.bot) {
       member.roles.add(roles.default);
     }
   });
