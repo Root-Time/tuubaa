@@ -152,6 +152,8 @@ async function createTicket(interaction: ButtonInteraction<CacheType>) {
   const parent = (interaction.channel as TextChannel)?.parent;
   const guild = interaction.guild;
 
+  console.log(name);
+
   await interaction.deferReply({ ephemeral: true });
   const channel = await interaction.guild?.channels.create({
     name: `${member.user.displayName} ` + name,
