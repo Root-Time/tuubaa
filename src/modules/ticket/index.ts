@@ -164,7 +164,7 @@ async function createTicket(interaction: ButtonInteraction<CacheType>) {
         id: interaction.guild.id,
         deny: [PermissionsBitField.Flags.ViewChannel],
         allow: [
-          name.includes("hobby")
+          name.toLowerCase().includes("hobby fotograf")
             ? PermissionsBitField.Flags.AttachFiles
             : PermissionsBitField.Flags.SendMessages,
         ],
