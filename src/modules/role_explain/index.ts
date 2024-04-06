@@ -133,7 +133,6 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   <:blue:1138230016002502757><@&${artist}>
   > gehört den Menschen die gut Zeichnen können ^^
 
-
 ### Level
 
   <:blue:1138230016002502757><@&${beifahrer}>
