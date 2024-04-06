@@ -96,7 +96,7 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   - <@${tuba.id}>
 
   <:blue:1138230016002502757><@&${dev}>
-  > gehört den **Developern**, die diesen Van mit eigenen Füßen und Händen gebaut haben
+  > gehört dem **Developer**, der diesen Van mit eigenen Füßen und Händen gebaut hat
   ${dev_member
     ?.map((member) => {
       return `- <@${member.id}>`;
@@ -104,7 +104,7 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
     .join("\n")}
 
   <:yellow:1138230010742841374><@&${manager}>
-  > gehört dem **Manager** der sich um denn Van und um die Wachhunde kümmert er erledigt er die Nachtschicht wenn tuubaa schläft
+  > gehört dem **Manager** der sich um denn Van und um die Wachhunde kümmert er erledigt.\nEr die Nachtschicht wenn tuubaa schläft
   ${manager_member
     ?.map((member) => {
       return `- <@${member.id}>`;
