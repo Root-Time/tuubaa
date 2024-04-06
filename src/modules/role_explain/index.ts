@@ -54,7 +54,7 @@ async function run(client: Client) {
       }
     }
   );
-};
+}
 
 async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   const roles = rolesList || config.roles.team;
@@ -73,6 +73,8 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   const mitentfueher = "1090728235765084183";
   const schuldig = "1090728047721844796";
   const unschuldige = "1009762884626169947";
+  const manager = "1224092798924492921";
+  const artist = "1188103824028737546";
 
   const owner_member = await getUsersFromRoleId(guild, owner);
   const dev_member = await getUsersFromRoleId(guild, dev);
@@ -84,6 +86,7 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   const mitentfueher_member = await getUsersFromRoleId(guild, mitentfueher);
   const schuldig_member = await getUsersFromRoleId(guild, schuldig);
   const unschuldige_member = await getUsersFromRoleId(guild, unschuldige);
+  const manager_member = await getUsersFromRoleId(guild, manager);
 
   const team = `
   ### Das Van Team
@@ -95,18 +98,26 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   <:blue:1138230016002502757><@&${dev}>
   > gehört den **Developern**, die diesen Van mit eigenen Füßen und Händen gebaut haben
   ${dev_member
-      ?.map((member) => {
-        return `- <@${member.id}>`;
-      })
-      .join("\n")}
+    ?.map((member) => {
+      return `- <@${member.id}>`;
+    })
+    .join("\n")}
+
+  <:yellow:1138230010742841374><@&${manager}>
+  > gehört dem **Manager** der sich um denn Van und um die Wachhunde kümmert er erledigt er die Nachtschicht wenn tuubaa schläft
+  ${manager_member
+    ?.map((member) => {
+      return `- <@${member.id}>`;
+    })
+    .join("\n")}
 
   <:green:1138230014580621342><@&${mod}>
   > gehört den **Moderatoren**, die aufpassen dass keiner diesen Van verlassen kann bzw keiner hier einbricht
   ${mod_member
-      ?.map((member) => {
-        return `- <@${member.id}>`;
-      })
-      .join("\n")}
+    ?.map((member) => {
+      return `- <@${member.id}>`;
+    })
+    .join("\n")}
 
 ### Besondere Menschen
 
@@ -118,6 +129,10 @@ async function createMessage(guild: Guild, rolesList: string[] | null = null) {
   
   <:purple:1138230018376482866><@&${YT}>
   > gehört den **Youtubern**, die ich cool finde
+
+  <:blue:1138230016002502757><@&${artist}>
+  > gehört den Menschen die gut Zeichnen können ^^
+
 
 ### Level
 
