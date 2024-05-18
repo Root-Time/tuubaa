@@ -1,3 +1,6 @@
+# VERALTET!!!
+bitte besuche https://github.com/tuubaa-de/tuubaa.server fuer den neuen Bot!.
+
 # tuubaa's navi
 
 Das ist der Discord Bot für den [tuubaa Discord Server](https://discord.gg/tuubaa).
